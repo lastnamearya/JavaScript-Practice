@@ -6,7 +6,7 @@ function Donuts(color, size) {
 
   // We can also define methods in Classes
   this.rate = function() {
-    return 'I order 10 donuts and size is ' + this.size;
+    return `I order 10 donuts and size is  ${this.size}`;
   }
 }
 
