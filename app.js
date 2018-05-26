@@ -1,15 +1,20 @@
-function Donuts(color, size) {
-  this.color = color;
-  this.size = size;
-  // By default it is set to order === 10
-  this.order = 10;
+// Parameters will remove in ES6 from class instantiation
 
-  // We can also define methods in Classes
-  this.rate = function() {
-    return `I order 10 donuts and size is  ${this.size}`;
+class Donuts{
+  constructor(color, size){
+    this.color = color;
+    this.size = size;
+    this.order = 10;
+    this.location = 'delhi';
+  }
+  orderBudget(location = 'paris') {
+    this.location = location;
+    return `I m from order ${this.order}`;
   }
 }
 
-var veganDonuts = new Donuts('pink', 'L');
+var veganDonuts = new Donuts('blue', 's');
 
-console.log(veganDonuts.rate())
+console.log(veganDonuts.location);
+console.log(veganDonuts.orderBudget());
+console.log(veganDonuts.location);
