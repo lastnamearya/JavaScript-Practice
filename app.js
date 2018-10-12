@@ -15,4 +15,8 @@ var languages = ["JavaScript", "Ruby", "Python"];
 
 // .apply() is similiar like .call() property but what it does is, it'll automatically going to parse the array for the arguments. We don't have to explicity pass the array index values for function execution.
 
-sayName.apply(stacey, languages);
+// .bind() is similar like .call() but rather then executing the function, it'll give us a new function which which's reference we can store somewhere.
+
+var newFn = sayName.bind(stacey, languages[0], languages[1], languages[2]);
+
+newFn();
