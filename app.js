@@ -13,4 +13,6 @@ var languages = ["JavaScript", "Ruby", "Python"];
 
 // During .call() this will not binds to the global window like regular function execution
 
-sayName.call(stacey, languages[0], languages[1], languages[2]);
+// .apply() is similiar like .call() property but what it does is, it'll automatically going to parse the array for the arguments. We don't have to explicity pass the array index values for function execution.
+
+sayName.apply(stacey, languages);
