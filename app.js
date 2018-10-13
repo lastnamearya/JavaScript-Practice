@@ -45,3 +45,7 @@ class Animal {
 
 const leo = new Animal("Leo", 7);
 const Jacky = new Animal("Jackey", 10);
+
+for (let key in leo) {
+  console.log(`Key: ${key}. Value: ${leo[key]}`);
+}
