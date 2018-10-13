@@ -46,6 +46,14 @@ class Animal {
 const leo = new Animal("Leo", 7);
 const Jacky = new Animal("Jackey", 10);
 
+// for (let key in leo) {
+//   console.log(`Key: ${key}. Value: ${leo[key]}`);
+// }
+
+// Avoid Prototype properties for iteration on instance
+
 for (let key in leo) {
-  console.log(`Key: ${key}. Value: ${leo[key]}`);
+  if (leo.hasOwnProperty(key)) {
+    console.log(`Key: ${key}. Value: ${leo[key]}`);
+  }
 }
