@@ -1,10 +1,18 @@
-function Animal(name, energy) {
-  if (this instanceof Animal === false) {
-    console.log("Forget to call Animal with the new keyword");
+// Private Class Fields ~ Babel plugin-transform-class-properties
+
+class Car {
+  #milesDriven = 0;
+
+  drive(distance) {
+    #milesDriven += distance;
   }
 
-  this.name = name;
-  this.energy = energy;
+  getMilesDriven() {
+    return #milesDriven;
+  }
 }
 
-const leo = Animal("Leo", 7);
+const tesla = new Car();
+tesla.drive(10);
+
+console.log(tesla.#milesDriven);
