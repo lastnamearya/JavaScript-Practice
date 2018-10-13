@@ -27,10 +27,14 @@ function Dog(name, energy, breed) {
   this.breed = breed;
 }
 
+Dog.prototype = Object.create(Animal.prototype);
+
+Dog.prototype.bark = function() {
+  console.log("Woof Woof");
+  this.energy -= 0.1;
+};
+
+// Reverting back to original constructor function that's changed during inheritance of the Parent Constructor function's prototype
+Dog.prototype.constructor = Dog;
+
 const charlie = new Dog("Charlie", 10, "Goldendoodle");
-
-// My Inheritance Approach using dunder proto
-// charlie.__proto__.__proto__ = Animal.prototype;
-
-// Another Way to do directly on the constructor function's prototype
-Dog.prototype.__proto__ = Animal.prototype;
