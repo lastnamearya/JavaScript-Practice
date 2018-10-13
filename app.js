@@ -18,19 +18,31 @@ class Animal {
     console.log(`${this.name} is playing.`);
     this.energy -= length;
   }
+
+  // Approach 2: Built in Solution by Js ~ static keyword
+
+  static nextToEat(animals) {
+    const sortedByLeastEnergy = animals.sort((a, b) => {
+      return a.energy - b.energy;
+    });
+
+    return sortedByLeastEnergy[0].name;
+  }
 }
 
-// Static Method that we don't want to have in the class but don't want to share with the instances ~ Because it's like a helper function.
+// // Approach 1
 
-function nextToEat(animals) {
-  const sortedByLeastEnergy = animals.sort((a, b) => {
-    return a.energy - b.energy;
-  });
+// // Static Method that we don't want to have in the class but don't want to share with the instances ~ Because it's like a helper function.
 
-  return sortedByLeastEnergy[0].name;
-}
+// function nextToEat(animals) {
+//   const sortedByLeastEnergy = animals.sort((a, b) => {
+//     return a.energy - b.energy;
+//   });
+
+//   return sortedByLeastEnergy[0].name;
+// }
 
 const leo = new Animal("Leo", 7);
 const snoop = new Animal("Snoop", 10);
 
-console.log(nextToEat([leo, snoop]));
+console.log(Animal.nextToEat([leo, snoop]));
