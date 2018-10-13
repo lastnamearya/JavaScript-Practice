@@ -24,10 +24,13 @@ Animal.prototype.bark = function() {
 
 function Dog(name, energy, breed) {
   Animal.call(this, name, energy);
-
   this.breed = breed;
 }
 
-Dog.prototype = Object.create(Animal.prototype);
-
 const charlie = new Dog("Charlie", 10, "Goldendoodle");
+
+// My Inheritance Approach using dunder proto
+// charlie.__proto__.__proto__ = Animal.prototype;
+
+// Another Way to do directly on the constructor function's prototype
+Dog.prototype.__proto__ = Animal.prototype;
