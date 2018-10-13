@@ -57,3 +57,8 @@ for (let key in leo) {
     console.log(`Key: ${key}. Value: ${leo[key]}`);
   }
 }
+
+// Check whether, instance of a Class
+
+const check = leo instanceof Animal;
+console.log(check);
