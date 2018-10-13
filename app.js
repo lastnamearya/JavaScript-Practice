@@ -1,12 +1,22 @@
-// window binding
+function Animal(name, energy) {
+  this.name = name;
+  this.energy = energy;
+}
 
-const age = 25;
-
-var sayAge = function() {
-  "use strict";
-  console.log(this.age);
+Animal.prototype.eat = function(amount) {
+  console.log(`${this.name} is eating`);
+  this.energy += amount;
 };
 
-// It'll throw an error to us ~ window binding with 'strict mode'
+Animal.prototype.sleep = function(length) {
+  console.log(`${this.name} is eating`);
+  this.energy += length;
+};
 
-sayAge();
+Animal.prototype.play = function(length) {
+  console.log(`${this.name} is eating`);
+  this.energy -= length;
+};
+
+const leo = new Animal("Leo", 7);
+const snoop = new Animal("Snoop", 10);
