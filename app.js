@@ -1,18 +1,33 @@
-// Private Class Fields ~ Babel plugin-transform-class-properties
-
-class Car {
-  #milesDriven = 0;
-
-  drive(distance) {
-    #milesDriven += distance;
-  }
-
-  getMilesDriven() {
-    return #milesDriven;
-  }
+function Animal(name, energy) {
+  this.name = name;
+  this.energy = energy;
 }
 
-const tesla = new Car();
-tesla.drive(10);
+Animal.prototype.eat = function(amount) {
+  console.log(`${this.name} is eating.`);
+  this.energy += amount;
+};
 
-console.log(tesla.#milesDriven);
+Animal.prototype.sleep = function(length) {
+  console.log(`${this.name} is sleeping.`);
+  this.energy += length;
+};
+
+Animal.prototype.play = function(length) {
+  console.log(`${this.name} is playing.`);
+  this.energy -= length;
+};
+
+Animal.prototype.bark = function() {
+  console.log("Fuck You!!");
+};
+
+function Dog(name, energy, breed) {
+  Animal.call(this, name, energy);
+
+  this.breed = breed;
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+
+const charlie = new Dog("Charlie", 10, "Goldendoodle");
