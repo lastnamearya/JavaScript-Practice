@@ -35,9 +35,12 @@ function getWeatherData(user) {
   });
 }
 
-$("#btn").on("click", () => {
-  getUser("lastnamearya")
-    .then(user => getWeatherData(user))
-    .then(data => updateUI(data))
-    .catch(showError);
+$("#btn").on("click", async () => {
+  const user = await getUser("lastnamearya");
+  const weather = await getWeatherData(user);
+
+  updateUI({
+    user,
+    weather
+  });
 });
