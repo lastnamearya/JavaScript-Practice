@@ -1,46 +1,7 @@
-function showError(e) {
-  console.warn("Error", e);
+// async function always return a promise, if we're returning a value then it's going to wrap that value in a function.
+
+async function add(x, y) {
+  return x + y;
 }
 
-function updateUI(info) {
-  $("#app").text(JSON.stringify(info));
-}
-
-function getLocationURL([city, state]) {
-  return `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${city}%2C%20${state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
-}
-
-function getUser(id) {
-  return new Promise((resolve, reject) => {
-    $.getJSON({
-      url: `https://api.github.com/users/${id}`,
-      success: resolve,
-      error: reject
-    });
-  });
-}
-
-function getWeatherData(user) {
-  return new Promise((resolve, reject) => {
-    $.getJSON({
-      url: getLocationURL(user.location.split(",")),
-      success(weather) {
-        resolve({
-          user,
-          weather: weather.query.results
-        });
-      },
-      error: reject
-    });
-  });
-}
-
-$("#btn").on("click", async () => {
-  const user = await getUser("lastnamearya");
-  const weather = await getWeatherData(user);
-
-  updateUI({
-    user,
-    weather
-  });
-});
+add(1, 2).then(result => console.log(result));
