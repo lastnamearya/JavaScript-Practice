@@ -1,50 +1,38 @@
-function showError(e) {
-  console.warn("Error", e);
+// Generator ~ A function that returns multiple values and can be paused and stopped anytime for the infinite time so you can pass information to at the later point of time.
+
+// function listPeople() {
+//   console.log('wes');
+//   console.log('Kait');
+//   console.log('Snickers');
+// }
+
+// listPeople();
+
+// A generator function is identified by the asterick sign with function keyword
+
+function* listPeople() {
+  // yield keyword ~ returns multiple values
+
+  yield 'Wes';
+  yield 'Kait';
+  yield 'Snickers';
 }
 
-function updateUI(info) {
-  $("#app").text(JSON.stringify(info));
+// It'll return an object that have a vaue equals to function return value and a done property that has a boolen value shows whether the genertor is done or not. In the final when you got done: true then value at that time is undefined.
+
+const people = listPeople();
+
+// To call people use .next() by saving it's refernce in a seprate variable otherwise if we do listPeople().next() then it keeps on returning the same first value.
+
+// A generator function keeps its variable in memory cache until its finished.
+
+function* generator() {
+  let i = 0;
+  yield i;
+  i++;
+  yield i;
+  i++;
+  yield i;
 }
 
-function getLocationURL([city, state]) {
-  return `https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${city}%2C%20${state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`;
-}
-
-function getUser(id) {
-  return new Promise((resolve, reject) => {
-    $.getJSON({
-      url: `https://api.github.com/users/${id}`,
-      success: resolve,
-      error: reject
-    });
-  });
-}
-
-function getWeatherData(user) {
-  return new Promise((resolve, reject) => {
-    $.getJSON({
-      url: getLocationURL(user.location.split(",")),
-      success(weather) {
-        resolve({
-          user,
-          weather: weather.query.results
-        });
-      },
-      error: reject
-    });
-  });
-}
-
-$("#btn").on("click", async () => {
-  try {
-    const user = await getUser("lastnamearya");
-    const weather = await getWeatherData(user);
-
-    updateUI({
-      user,
-      weather
-    });
-  } catch (e) {
-    showError(e);
-  }
-});
+const i = generator();
