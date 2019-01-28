@@ -8,9 +8,14 @@ for (var i = 0; i < items.length; i++) {
     items[i].addEventListener(
       'click',
       function(event) {
+        if (y === 2) {
+          // Hook in the Event Cycle
+          event.stopPropagation();
+        }
+        alert(y);
         console.log(items[y], event);
       },
-      false // false is default for the Event Bubbling, for Event Capturing make it true.
+      true // false is default for the Event Bubbling, for Event Capturing make it true.
     );
   })();
 }
