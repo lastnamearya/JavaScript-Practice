@@ -1,24 +1,11 @@
-function createPerson() {
-  var firstName = 'Jigyasu';
-  var lastName = 'Arya';
-  var returnObj = {
-    getFirstname: function() {
-      return firstName;
-    },
-    setFirstName: function(firstName) {
-      firstName = firstName;
-    },
-    setLastName: function(lastName) {
-      lastName = lastName;
-    },
-    getLastName: function() {
-      return lastName;
-    }
-  };
-  return returnObj;
+var i = 0;
+
+for (var i; i < 10; i++) {
+  // Now the Garbage collector won't remove the values of currentValue on every execution
+  (function() {
+    var currentValue = i;
+    setTimeout(function() {
+      console.log(currentValue);
+    }, 1000);
+  })();
 }
-
-var person = createPerson();
-
-console.log(person.getFirstname());
-console.log(person.getLastName());
