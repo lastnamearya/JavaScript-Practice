@@ -10,9 +10,9 @@ for (var i = 0; i < items.length; i++) {
       function(event) {
         if (y === 2) {
           // Hook in the Event Cycle
-          event.stopPropagation();
+          event.preventDefault();
         }
-        alert(y);
+        // alert(y);
         console.log(items[y], event);
       },
       true // false is default for the Event Bubbling, for Event Capturing make it true.
