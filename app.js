@@ -1,15 +1,17 @@
-// Constructor OO Pattern
-
-function A(first, second) {
-  this.first = first;
-  this.second = second;
+function First(one, two) {
+  this.one = one;
+  this.two = two;
 }
 
-function B(third, first, second) {
-  A.call(this, first, second);
+First.prototype.firstReturn = function() {
+  return console.log('Returned by First');
+};
+
+function Second(third, fourth) {
   this.third = third;
+  this.fourth = fourth;
 }
 
-var x = new B(3, 1, 2);
+Second.prototype = Object.create(First.prototype);
 
-console.log(x);
+var x = new Second(3, 4);
