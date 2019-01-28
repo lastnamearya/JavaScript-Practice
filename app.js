@@ -1,11 +1,15 @@
-var i = 0;
+// Constructor OO Pattern
 
-for (var i; i < 10; i++) {
-  // Now the Garbage collector won't remove the values of currentValue on every execution
-  (function() {
-    var currentValue = i;
-    setTimeout(function() {
-      console.log(currentValue);
-    }, 1000);
-  })();
+function A(first, second) {
+  this.first = first;
+  this.second = second;
 }
+
+function B(third, first, second) {
+  A.call(this, first, second);
+  this.third = third;
+}
+
+var x = new B(3, 1, 2);
+
+console.log(x);
