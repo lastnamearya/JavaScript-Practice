@@ -1,12 +1,13 @@
-// Here this created in the interpetation pass.
+var a = {
+  one: 1,
+  two: 2
+};
 
-// That's how Bind solves our problem ~ binds this of the function expression to the global window object.
+var b = {
+  three: 3,
+  four: 4
+};
 
-// We can directly bind this after the function expression.
+b.__proto__ = a;
 
-var a = function() {
-  console.log(this);
-}.bind(this);
-
-// Return undefined ~ rather than the global window object
-console.log(a());
+console.log(b.one);
