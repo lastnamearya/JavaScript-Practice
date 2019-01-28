@@ -1,14 +1,12 @@
-const trial = {
-  tryOne: function() {
-    console.log(this);
-
-    var self = this;
-
-    function tryTwo() {
-      console.log(this);
-    }
-    tryTwo.call(self);
+function sum() {
+  var total = 0;
+  for (var i = 0; i < arguments.length; i++) {
+    total += arguments[i];
   }
-};
+  console.log(total);
+}
 
-trial.tryOne();
+var things = [1, 2, 3, 4, 5];
+
+// We have to pass null as the first argument.
+sum.apply(null, things);
