@@ -1,15 +1,24 @@
-var a = {
-  one: 1,
-  two: 2
-};
+function createPerson() {
+  var firstName = 'Jigyasu';
+  var lastName = 'Arya';
+  var returnObj = {
+    getFirstname: function() {
+      return firstName;
+    },
+    setFirstName: function(firstName) {
+      firstName = firstName;
+    },
+    setLastName: function(lastName) {
+      lastName = lastName;
+    },
+    getLastName: function() {
+      return lastName;
+    }
+  };
+  return returnObj;
+}
 
-var b = Object.create(a, {
-  three: { value: 3 },
-  four: { value: 4 }
-});
+var person = createPerson();
 
-console.log(b.two);
-
-// To check the isPrototypeOf
-
-console.log(a.isPrototypeOf(b));
+console.log(person.getFirstname());
+console.log(person.getLastName());
