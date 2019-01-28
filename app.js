@@ -1,12 +1,8 @@
-function sum() {
-  var total = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    total += arguments[i];
-  }
-  console.log(total);
-}
+// Here this created in the interpetation pass.
 
-var things = [1, 2, 3, 4, 5];
+var a = function() {
+  console.log(this);
+};
 
-// We have to pass null as the first argument.
-sum.apply(null, things);
+// Return undefined ~ rather than the global window object
+console.log(a());
